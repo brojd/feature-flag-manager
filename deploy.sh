@@ -5,8 +5,8 @@ RELEASE_NAME="feature-flag-manager"
 CHART_PATH="helm/feature-flag-manager"
 IMAGE="feature-flag-manager"
 TAG="latest"
-LOCAL_PORT=3000
-CONTAINER_PORT=3000
+LOCAL_PORT=3005
+CONTAINER_PORT=3005
 
 echo "==> Building Docker image..."
 docker build -t "${IMAGE}:${TAG}" .

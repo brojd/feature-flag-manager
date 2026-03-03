@@ -87,7 +87,7 @@ app.delete("/api/flags/:key", (req: Request<{ key: string }>, res: Response) => 
   res.status(204).send();
 });
 
-const PORT = parseInt(process.env.PORT || "3000", 10);
+const PORT = parseInt(process.env.PORT || "3005", 10);
 app.listen(PORT, () => {
   console.log(`Feature flag manager listening on port ${PORT}`);
 });

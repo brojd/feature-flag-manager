@@ -9,7 +9,7 @@ npm install
 npm run dev
 ```
 
-The server starts on `http://localhost:3000`.
+The server starts on `http://localhost:3005`.
 
 ## API
 
@@ -34,30 +34,30 @@ All flag endpoints use JSON. Flag shape:
 
 ```bash
 # Create a flag
-curl -X POST localhost:3000/api/flags \
+curl -X POST localhost:3005/api/flags \
   -H 'Content-Type: application/json' \
   -d '{"key": "dark-mode", "enabled": true, "description": "Enable dark mode"}'
 
 # List all flags
-curl localhost:3000/api/flags
+curl localhost:3005/api/flags
 
 # Get a single flag
-curl localhost:3000/api/flags/dark-mode
+curl localhost:3005/api/flags/dark-mode
 
 # Toggle a flag
-curl -X PATCH localhost:3000/api/flags/dark-mode \
+curl -X PATCH localhost:3005/api/flags/dark-mode \
   -H 'Content-Type: application/json' \
   -d '{"enabled": false}'
 
 # Delete a flag
-curl -X DELETE localhost:3000/api/flags/dark-mode
+curl -X DELETE localhost:3005/api/flags/dark-mode
 ```
 
 ## Docker
 
 ```bash
 docker build -t feature-flag-manager .
-docker run -p 3000:3000 feature-flag-manager
+docker run -p 3005:3005 feature-flag-manager
 ```
 
 ## Deploy to Kubernetes
@@ -72,7 +72,7 @@ This will:
 1. Build the Docker image
 2. Install (or upgrade) the Helm release
 3. Wait for the pod to be ready
-4. Port-forward to `localhost:3000`
+4. Port-forward to `localhost:3005`
 
 To stop the service and uninstall the Helm release:
 
