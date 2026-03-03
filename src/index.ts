@@ -11,7 +11,10 @@ app.use(express.json());
 
 const flags = new Map<string, Flag>();
 
-// Health check (used by k8s liveness/readiness probes)
+// Health check
+//
+// Kubernetes liveness/readiness probes in the Helm chart expect `/healthz`.
+// Keep `/health` for backwards compatibility.
 app.get(["/health", "/healthz"], (_req: Request, res: Response) => {
   res.json({ status: "ok" });
 });
@@ -88,6 +91,6 @@ app.delete("/api/flags/:key", (req: Request<{ key: string }>, res: Response) => 
 });
 
 const PORT = parseInt(process.env.PORT || "3005", 10);
-app.listen(PORT, "0.0.0.0", () => {
+app.listen(PORT, () => {
   console.log(`Feature flag manager listening on port ${PORT}`);
 });
