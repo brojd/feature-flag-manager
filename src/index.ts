@@ -12,7 +12,10 @@ app.use(express.json());
 const flags = new Map<string, Flag>();
 
 // Health check
-app.get("/health", (_req: Request, res: Response) => {
+//
+// Kubernetes liveness/readiness probes in the Helm chart expect `/healthz`.
+// Keep `/health` for backwards compatibility.
+app.get(["/health", "/healthz"], (_req: Request, res: Response) => {
   res.json({ status: "ok" });
 });
 
