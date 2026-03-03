@@ -11,8 +11,8 @@ app.use(express.json());
 
 const flags = new Map<string, Flag>();
 
-// Health check
-app.get("/health", (_req: Request, res: Response) => {
+// Health check (used by k8s liveness/readiness probes)
+app.get(["/health", "/healthz"], (_req: Request, res: Response) => {
   res.json({ status: "ok" });
 });
 
@@ -88,6 +88,6 @@ app.delete("/api/flags/:key", (req: Request<{ key: string }>, res: Response) => 
 });
 
 const PORT = parseInt(process.env.PORT || "3005", 10);
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`Feature flag manager listening on port ${PORT}`);
 });
