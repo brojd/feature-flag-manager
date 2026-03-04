@@ -12,7 +12,7 @@ app.use(express.json());
 const flags = new Map<string, Flag>();
 
 // Health check
-app.get("/health", (_req: Request, res: Response) => {
+app.get("/healthz", (_req: Request, res: Response) => {
   res.json({ status: "ok" });
 });
 
